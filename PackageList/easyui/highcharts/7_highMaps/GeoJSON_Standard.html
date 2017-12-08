@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="/Scripts/jquery-1.11.3.min.js"></script>
+    <!--<script src="/Scripts/highcharts/highcharts.js"></script>-->
+    <script src="/Scripts/highcharts/highmaps.js"></script>
+    <script src="/Scripts/highcharts/exporting.js"></script>
+    <script src="/Scripts/highcharts/dark-unica.js"></script>
+
+</head>
+<body>
+
+    <div id="container" style="min-width: 600px; max-width: 700px"></div>
+    <script>
+        $(function () {
+            // Prepare random data
+            var data = [
+                {
+                    "name": "浙江",
+                    "value": 728
+                },
+                {
+                    "name": "福建",
+                    "value": 710
+                },
+                {
+                    "name": "广东",
+                    "value": 963
+                },
+                {
+                    "name": "湖北",
+                    "value": 541
+                }, {
+                    name: "湖南",
+                    value: 122
+                }
+            ];
+            $.getJSON('https://data.jianshukeji.com/jsonp?filename=geochina/china.json&callback=?', function (geojson) {
+                // Initiate the chart
+                $('#container').highcharts('Map', {
+                    title: {
+                        text: 'GeoJSON in Highmaps'
+                    },
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
+                        }
+                    },
+                    colorAxis: {
+                    },
+                    series: [{
+                        data: data,
+                        mapData: geojson,
+                        joinBy: ['name', 'name'],
+                        name: 'Random data',
+                        states: {
+                            hover: {
+                                color: '#BADA55'
+                            }
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }]
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人口管理-人口汇总统计</title>
+    <!--<link href="/Content/themes/default/easyui.css" rel="stylesheet" />
+    <link href="/Content/themes/icon.css" rel="stylesheet" />-->
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/base_population.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="/Scripts/umd/popper.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/highcharts/highcharts.js"></script>
+    <script src="/Scripts/highcharts/highcharts-3d.js"></script>    
+    <!--<script src="/Scripts/highcharts/exporting.js"></script>-->
+    <script src="/Scripts/highcharts/data.js"></script>
+    <!--<script src="/Scripts/highcharts/drilldown.js"></script>-->
+    <script src="/Scripts/highcharts/themes/grid-light.js"></script>
+    <!--<script src="/Scripts/jquery.easyui-1.4.5.min.js"></script>>-->
+
+
+</head>
+<body>
+    <div class="container-fluid fatherBox">
+        <div class="sonBox">            
+            <div class="row">
+                <div class="col-md-9" id="leftBlock">                    
+                    <div id="searchBlock">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio_column" value="option1" checked>
+                                柱形图（人数）
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio_pie" value="option2">
+                                饼图（比例）
+                            </label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                社区选择
+                            </button>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" type="button">社区一</button>
+                                <button class="dropdown-item" type="button">社区二</button>
+                                <button class="dropdown-item" type="button">社区三</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="hcContainer">
+                    </div>
+                </div>
+
+                <div class="col-md-3" id="rightBlock">                    
+                    <table id="datatable" class="table table-bordered table-sm table-responsive">
+                        <caption>统计表格</caption>
+                        <thead class="thead-default">                            
+                            <tr>
+                                <!--<th>社区名称\类型</th>-->
+                                <th>#</th>
+                                <th>户籍</th>
+                                <th>非户籍</th>
+                                <th>总数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>社区一</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>社区二</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>社区三</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>社区四</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>社区五</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>社区六</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Scripts/base_highcharts.js"></script>
+</body>
+</html>

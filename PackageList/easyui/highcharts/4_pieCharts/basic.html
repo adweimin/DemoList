@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="/Scripts/highcharts/highcharts.js"></script>
+    <script src="/Scripts/highcharts/exporting.js"></script>
+    <script src="/Scripts/highcharts/dark-unica.js"></script>
+</head>
+<body>
+    <div id="container" style="min-width:400px;height:400px"></div>
+    
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "../../../Service/HighchartDemo.asmx/FruitAnalysis",
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    Result = Result.d;
+                    var data = [];
+                    for (var i in Result) {
+                        var serie = new Array(Result[i].Name, Result[i].Value);
+                        data.push(serie);
+                    }
+                    DreawChart(data);
+                },
+                error: function (Result) {
+                    alert("Error");
+                }
+            });
+        });
+
+
+        function DreawChart(series) {
+            $('#container').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 1, //null,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'fruit market shares at a specific month, 2014'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Fruit share',
+                    data: series
+                }]
+            });
+        }
+    </script>
+
+
+    
+</body>
+</html>

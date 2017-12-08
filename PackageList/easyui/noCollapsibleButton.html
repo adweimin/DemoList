@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>No collapsible button in Layout - jQuery EasyUI Demo</title>
+    <link href="../Content/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../Content/themes/icon.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.11.3.min.js"></script>
+    <script src="../Scripts/jquery.easyui-1.4.5.min.js"></script>
+    <script src="../Scripts/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+    <h2>No collapsible button in Layout</h2>
+    <p>The layout region panel has no collapsible button.</p>
+    <div style="margin:20px 0;"></div>
+    <div class="easyui-layout" style="width:700px;height:350px;">
+        <div data-options="region:'north'" style="height:50px"></div>
+        <div data-options="region:'south',split:true" style="height:50px;"></div>
+        <div data-options="region:'east',split:true,title:'East',collapsible:false" style="width:250px;">
+            <table id="tt" class="easyui-propertygrid" data-options="
+						url: '../Data/propertygrid_data1.json',
+						method: 'get',
+						showGroup: true,
+						fit: true,
+						border: false">
+            </table>
+        </div>
+        <div data-options="region:'center',title:'Main Title',iconCls:'icon-ok',href:'../Data/_content.html'" style="padding:10px">
+        </div>
+    </div>
+
+</body>
+</html>

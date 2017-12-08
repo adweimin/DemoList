@@ -1,0 +1,35 @@
+﻿{
+  "total": 28,
+  "rows": [
+    {
+      "totalAmount": 100,
+      "oneAmount": 30,
+      "twoAmount": 70,
+      "itemname": "社区一"
+    },
+    {
+      "totalAmount": 120,
+      "oneAmount": 40,
+      "twoAmount": 80,
+      "itemname": "社区二"
+    },
+    {
+      "totalAmount": 900,
+      "oneAmount": 30,
+      "twoAmount": 60,
+      "itemname": "社区三"
+    },
+    {
+      "totalAmount": 100,
+      "oneAmount": 30,
+      "twoAmount": 70,
+      "itemname": "社区四"
+    },
+    {
+      "totalAmount": 100,
+      "oneAmount": 30,
+      "twoAmount": 70,
+      "itemname": "社区五"
+    }    
+  ]
+}

@@ -1,0 +1,67 @@
+﻿body {
+}
+
+html {
+    font-size: 14px;
+}
+
+.fatherBox {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;    
+}
+
+.sonBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    /*border: 2px solid #f1f1f1;
+    border-radius: 5px;*/
+}
+
+
+/*.leftBlock {
+    padding-left: 30px;
+}*/
+
+#rightBlock {
+    margin-top:80px;
+}
+
+.hcPopulation {
+    margin-top:40px;
+}
+
+#datatable {
+    font-size: 12px;
+}
+
+
+
+/*Start Responsive typography*/
+@include media-breakpoint-up(sm) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    html {
+        font-size: 20px;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    html {
+        font-size: 28px;
+    }
+}
+/*End Responsive typography*/ 
+
