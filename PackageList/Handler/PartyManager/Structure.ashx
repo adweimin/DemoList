@@ -6,11 +6,13 @@ using System.Data;
 using System.Text;
 using Common;
 using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 
 public class Structure : IHttpHandler {
 
     SQLHelper p = new SQLHelper();
+    List<StructureList> tree = new List<StructureList>();
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
         DataTable dt = null;
@@ -26,11 +28,20 @@ public class Structure : IHttpHandler {
     {
         p.OpenConnection();
         //StringBuilder sb = new StringBuilder();
-        string str="SELECT PartyId,PartyName,ParentId FROM ST_PARTY";
+        string str="SELECT PartyId,PartyName,ParentId FROM ST_PARTY WHERE PartyId <> 0";
         DataTable dt = p.GetDBTable(str).Tables[0];
+        DataRow newRow = dt.NewRow();
+        newRow["PartyId"] = 0;
+        newRow["PartyName"] = "双塔街道党工委";
+        newRow["ParentId"] = -1;
+        dt.Rows.InsertAt(newRow,0);
         p.RealeaseConnection();
         return dt;
     }
+
+
+
+
 
     /// <summary>
     /// table转换为json(参照echarts.example-flare.json格式)
@@ -38,32 +49,33 @@ public class Structure : IHttpHandler {
     /// <param name="dt"></param>
     /// <returns></returns>
     public string ConvertToJson(DataTable dt) {
-        string partyId, partyName, parentId;
-        StringBuilder transJson=new StringBuilder();
-        transJson.Append("{");
-        List<StructureList> structureList = new List<StructureList>(){ };
-
-        for (int i = 1; i < dt.Rows.Count; i++) {
-            partyId = dt.Rows[i]["PartyId"].ToString();
-            //partyName = dt.Rows[i]["PartyName"].ToString();
-            parentId = dt.Rows[i]["ParentId"].ToString();
-            bool f=partyId==parentId?true:false;
-
-
-
+        foreach (DataRow row in dt.Rows)
+        {
+            StructureList tr = new StructureList(row["PartyId"].ToString(), row["ParentId"].ToString(), row["PartyName"].ToString());
+            tree.Add(tr);
         }
-
-
-        return transJson.ToString();
+        List<StructureList> structureList = new List<StructureList>(){ };
+        JavaScriptSerializer jsS = new JavaScriptSerializer();
+        string result = jsS.Serialize(tree);
+        return result;
     }
+
+
 
 
 
 
     public class StructureList
     {
-        public string Name { get; set; }
-        public List<StructureList> Childern { get; set; }
+        public string Id;
+        public string Pid;
+        public string Name;
+        public StructureList(string id,string pid,string name)
+        {
+            Id = id;
+            Pid = pid;
+            Name = name;
+        }
     }
 
 
