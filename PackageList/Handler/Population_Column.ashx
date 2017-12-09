@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json.Serialization;
+using Common;
 
 public class Population_Column : IHttpHandler {
     SQLHelper pSqlHelper = new SQLHelper();
